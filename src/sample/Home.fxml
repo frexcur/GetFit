@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerHome">
+   <center>
+      <VBox prefHeight="161.0" prefWidth="620.0" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="213.0" prefWidth="620.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="85.0" prefWidth="618.0">
+                     <children>
+                        <VBox prefHeight="95.0" prefWidth="620.0">
+                           <children>
+                              <Label prefHeight="46.0" prefWidth="153.0" text="Calories Remaining" translateX="220.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="243.0" text="1700       -      0      =      1700" translateX="200.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="296.0" text="            Goal                  Food              Remaining" textFill="#8a8383" translateX="175.0">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="618.0">
+                     <children>
+                        <VBox prefHeight="77.0" prefWidth="620.0">
+                           <children>
+                              <Label id="clock" text="Quote of the Day" translateX="225.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="&quot;You can't go back and change the beginning. But, you can start now and change the end&quot;" translateX="80.0" />
+                              <Label text="-Anonymous" translateX="500.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: #1f4687;" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton mnemonicParsing="false" translateX="3.0" translateY="15.0">
+               <items>
+                  <MenuItem fx:id="profileMenuButton" mnemonicParsing="false" text="Profile" />
+                  <MenuItem mnemonicParsing="false" text="Diary" />
+                  <MenuItem mnemonicParsing="false" text="Progress" />
+                  <MenuItem mnemonicParsing="false" text="Settings" />
+                  <MenuItem mnemonicParsing="false" text="Logout" />
+               </items>
+            </MenuButton>
+            <HBox prefHeight="65.0" prefWidth="257.0" HBox.hgrow="ALWAYS" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home" translateY="12.0" wrappingWidth="104.11669921875">
+               <font>
+                  <Font name="Poor Richard" size="25.0" />
+               </font>
+            </Text>
+            <HBox prefHeight="56.0" prefWidth="180.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="50.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" translateX="-2.0" translateY="2.0">
+               <image>
+                  <Image url="@ProfilePic.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="114.0" prefWidth="620.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="143.0" prefWidth="176.0" style="-fx-background-color: Grey;">
+               <children>
+                  <Label text="Video of the Day :" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <StackPane prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="143.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="https://static.crello.com/public/images/landingYoutubeThumbnails/yt-post-3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="41.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/YouTube_play_buttom_icon_%282013-2017%29.svg/2000px-YouTube_play_buttom_icon_%282013-2017%29.svg.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <VBox prefHeight="143.0" prefWidth="192.0" style="-fx-background-color: GREY;" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
