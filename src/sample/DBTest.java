@@ -105,17 +105,83 @@ public class DBTest {
     }
   }
 
-  public void createAccount(String firstName, String lastName, String username,
-      String password, int age, double weight, double height) {
+  public void insertUsername(String username) {
     try {
       stmt = conn.createStatement();
-      stmt.execute("insert into " + "USERS (FIRSTNAME, LASTNAME, USERNAME, PASSWORD, "
-          + "AGE, WEIGHT, HEIGHT) " + " values (" +
-          "'" + firstName + "', '" + lastName + "', '" + username + "', '" +
-          password + "', " + age + ", " + weight + ", " + height + ")");
+      stmt.execute("insert into " + "USERS (USERNAME) " + " values (" +
+          "'" + username + "')");
       stmt.close();
     } catch (SQLException sqlExcept) {
       sqlExcept.printStackTrace();
     }
   }
-}
+
+  public void insertPassword(String password) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("insert into " + "USERS (PASSWORD) " + " values (" +
+          "'" + password + "')");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editAge(String username, int age) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set AGE where USERNAME = " + username);
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editWeight(String username, double weight) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set WEIGHT where USERNAME = " + username);
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editHeight(String username, double height) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set HEIGHT where USERNAME = " + username);
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+
+  public void createAccount(String firstName, String lastName, String username,
+      String password) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("insert into " + "USERS (FIRSTNAME, LASTNAME, USERNAME, PASSWORD)" +
+          " values ('" + firstName + "', '" + lastName + "', '" + username + "', '" +
+          password + "')");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+//  public void createAccount(String firstName, String lastName, String username,
+//      String password, int age, double weight, double height) {
+//    try {
+//      stmt = conn.createStatement();
+//      stmt.execute("insert into " + "USERS (FIRSTNAME, LASTNAME, USERNAME, PASSWORD, "
+//          + "AGE, WEIGHT, HEIGHT) " + " values (" +
+//          "'" + firstName + "', '" + lastName + "', '" + username + "', '" +
+//          password + "', " + age + ", " + weight + ", " + height + ")");
+//      stmt.close();
+//    } catch (SQLException sqlExcept) {
+//      sqlExcept.printStackTrace();
+//    }
+//  }
+  }
