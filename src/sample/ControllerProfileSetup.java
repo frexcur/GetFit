@@ -2,7 +2,7 @@ package sample;
 
 import static java.lang.Integer.parseInt;
 import static sample.Main.currentUser;
-
+import static sample.Main.database;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,8 +24,6 @@ public class ControllerProfileSetup {
 //  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 //  LocalDateTime now = LocalDateTime.now();
 
-  DBTest db = new DBTest();
-
   ObservableList<String> genderList = FXCollections.observableArrayList("Male", "Female");
 
   ObservableList<String> goalList = FXCollections.observableArrayList("Lose 0.5 pounds per week",
@@ -40,8 +38,6 @@ public class ControllerProfileSetup {
   ObservableList<String> activityLevelListWomen = FXCollections.observableArrayList("Sedentary "
       + "(little to no exercise)", "Lightly Active (light exercise/sports 1-3 days/week)", "Moderately Active "
       + "(moderate exercise/sports 3-5 days/week)", "Very Active (hard exercise/sports 6-7 days a week)");
-
-
 
   @FXML
   private ChoiceBox genderChoice;
@@ -71,7 +67,6 @@ public class ControllerProfileSetup {
   private Label timeLabel;
 
   public void initialize (){
-    db.createConnection();
     setChoiceBox();
   }
 
@@ -89,14 +84,23 @@ public class ControllerProfileSetup {
 
   @FXML
   void skipPressed(ActionEvent event) {
-
-
   }
 
   @FXML
   void submitPressed(ActionEvent event) throws IOException {
+    double height = parseInt(heightTextField.getText());
+    double weight = parseInt(weightTextField.getText());
     int age = parseInt(ageTextField.getText());
-    db.editAge(currentUser, age);
+    database.editHeight(currentUser, height);
+    database.editWeight(currentUser, weight);
+    database.editAge(currentUser, age);
+    if (genderChoice.equals("Male")){
+      database.editGender(currentUser, 'M');
+    }
+    else {
+      database.editGender(currentUser, 'F');
+    }
+
     Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
