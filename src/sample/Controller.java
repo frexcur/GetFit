@@ -14,14 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import static sample.Main.currentUser;
+import static sample.Main.database;
 
 public class Controller {
-
-
-  public AccountHashMap<String, String> accountHash = new AccountHashMap<>();
-
-
-
 
   @FXML
   private TextField userNameText;
@@ -40,39 +36,29 @@ public class Controller {
 
   @FXML
   void loginPress(ActionEvent event) throws IOException {
-    accountHash.put("Fred", "password");
     String username = userNameText.getText();
     String password = passwordText.getText();
 
-    if (accountHash != null) {
-      if (accountHash.containsKey(username)) {
-        if ((accountHash.get(username)).equals(password)) {
-          Alert alert = new Alert(AlertType.INFORMATION);
-          alert.setTitle(null);
-          alert.setHeaderText(null);
-          alert.setContentText("Login successful!");
+    if (database.checkIfUsernameExist(username) && database.checkIfPasswordIsCorrect(username, password)) {
+      Alert alert = new Alert(AlertType.INFORMATION);
+      alert.setTitle(null);
+      alert.setHeaderText(null);
+      alert.setContentText("Login successful!");
+      currentUser = username;
 
-          alert.showAndWait();
-          Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
-          Scene homeScene = new Scene(homeParent);
-          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-          window.setScene(homeScene);
-          window.show();
-        }
-
-      }
-      else {
-        lab.setText("Wrong username");
-        passwordWrongLabel.setText("or password");
-      }
-    } else {
+      alert.showAndWait();
+      Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+      Scene homeScene = new Scene(homeParent);
+      Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      window.setScene(homeScene);
+      window.show();
+    }
+    else {
       lab.setText("Wrong username");
       passwordWrongLabel.setText("or password");
+
     }
-
   }
-
-
 
   @FXML
   void signupPress(ActionEvent event) throws IOException {
@@ -83,5 +69,4 @@ public class Controller {
     window.show();
 
   }
-
 }
