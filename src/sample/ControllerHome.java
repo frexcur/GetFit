@@ -1,5 +1,7 @@
 package sample;
 
+import static sample.Main.currentUser;
+import static sample.Main.database;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +16,9 @@ public class ControllerHome {
 
   @FXML
   private MenuItem profileMenuButton;
+
+  public void initialize (){
+  }
 
 
   @FXML
