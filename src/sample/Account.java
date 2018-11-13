@@ -13,6 +13,7 @@ public class Account implements AccountInfo {
   private int weight;
   private int age;
   private Gender gender;
+  static String currentUser;
 
 
   Account() {

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import javafx.collections.ObservableList;
 
 public class DBTest {
 
@@ -86,7 +86,7 @@ public class DBTest {
   public void insertFirstName(String firstName) {
     try {
       stmt = conn.createStatement();
-      stmt.execute("insert into " + "USERS (FIRSTNAME) " + " values (" +
+      stmt.execute("insert into " + tableName + "(FIRSTNAME) " + " values (" +
           "'" + firstName + "')");
       stmt.close();
     } catch (SQLException sqlExcept) {
@@ -108,7 +108,7 @@ public class DBTest {
   public void insertUsername(String username) {
     try {
       stmt = conn.createStatement();
-      stmt.execute("insert into " + "USERS (USERNAME) " + " values (" +
+      stmt.execute("insert into USERS (USERNAME) values (" +
           "'" + username + "')");
       stmt.close();
     } catch (SQLException sqlExcept) {
@@ -130,7 +130,7 @@ public class DBTest {
   public void editAge(String username, int age) {
     try {
       stmt = conn.createStatement();
-      stmt.execute("update USERS set AGE where USERNAME = " + username);
+      stmt.execute("update USERS set AGE = " + age +  " where USERNAME = '" + username + "'");
       stmt.close();
     } catch (SQLException sqlExcept) {
       sqlExcept.printStackTrace();
@@ -140,7 +140,7 @@ public class DBTest {
   public void editWeight(String username, double weight) {
     try {
       stmt = conn.createStatement();
-      stmt.execute("update USERS set WEIGHT where USERNAME = " + username);
+      stmt.execute("update USERS set WEIGHT = " + weight + " where USERNAME = '" + username + "'");
       stmt.close();
     } catch (SQLException sqlExcept) {
       sqlExcept.printStackTrace();
@@ -150,7 +150,17 @@ public class DBTest {
   public void editHeight(String username, double height) {
     try {
       stmt = conn.createStatement();
-      stmt.execute("update USERS set HEIGHT where USERNAME = " + username);
+      stmt.execute("update USERS set HEIGHT = " + height + " where USERNAME = '" + username + "'");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editGender(String username, char gender) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set GENDER = '" + gender + "' where USERNAME = '" + username + "'");
       stmt.close();
     } catch (SQLException sqlExcept) {
       sqlExcept.printStackTrace();
@@ -158,7 +168,9 @@ public class DBTest {
   }
 
 
-  public void createAccount(String firstName, String lastName, String username,
+
+
+  public void createAccountStartup(String firstName, String lastName, String username,
       String password) {
     try {
       stmt = conn.createStatement();
@@ -171,17 +183,39 @@ public class DBTest {
     }
   }
 
-//  public void createAccount(String firstName, String lastName, String username,
-//      String password, int age, double weight, double height) {
-//    try {
-//      stmt = conn.createStatement();
-//      stmt.execute("insert into " + "USERS (FIRSTNAME, LASTNAME, USERNAME, PASSWORD, "
-//          + "AGE, WEIGHT, HEIGHT) " + " values (" +
-//          "'" + firstName + "', '" + lastName + "', '" + username + "', '" +
-//          password + "', " + age + ", " + weight + ", " + height + ")");
-//      stmt.close();
-//    } catch (SQLException sqlExcept) {
-//      sqlExcept.printStackTrace();
-//    }
-//  }
+  public void displayAge(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        String firstName = results.getString(1);
+        String lastName = results.getString(2);
+        String user = results.getString(3);
+        String password = results.getString(4);
+        int age = results.getInt(5);
+        double weight = results.getDouble(6);
+        double height = results.getDouble(7);
+        String gender = results.getString(8);
+        System.out.println(age);
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void createAccount(String firstName, String lastName, String username,
+      String password, int age, double weight, double height) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("insert into " + "USERS (FIRSTNAME, LASTNAME, USERNAME, PASSWORD, "
+          + "AGE, WEIGHT, HEIGHT) " + " values (" +
+          "'" + firstName + "', '" + lastName + "', '" + username + "', '" +
+          password + "', " + age + ", " + weight + ", " + height + ")");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
   }

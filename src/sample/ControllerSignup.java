@@ -13,10 +13,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import static sample.Main.currentUser;
 
 public class ControllerSignup {
 
-
+  DBTest db = new DBTest();
   AccountHashMap<String, String> accountHash = new AccountHashMap<>();
 
   @FXML
@@ -39,10 +40,14 @@ public class ControllerSignup {
 
   @FXML
   void signupPress(ActionEvent event) throws IOException {
+    db.createConnection();
     String firstName = firstNameText.getText();
     String lastName = lastNameText.getText();
     String username = userNameText.getText();
     String password = passwordText.getText();
+
+    db.createAccountStartup(firstName, lastName, username, password);
+    currentUser = username;
 
     Account a1 = new Account(firstName, lastName, username, password);
     accountHash.put("freddy", password);

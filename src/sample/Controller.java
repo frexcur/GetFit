@@ -38,7 +38,6 @@ public class Controller {
   @FXML
   private Label passwordWrongLabel;
 
-
   @FXML
   void loginPress(ActionEvent event) throws IOException {
     accountHash.put("Fred", "password");

@@ -1,5 +1,8 @@
 package sample;
 
+import static java.lang.Integer.parseInt;
+import static sample.Main.currentUser;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,6 +24,7 @@ public class ControllerProfileSetup {
 //  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 //  LocalDateTime now = LocalDateTime.now();
 
+  DBTest db = new DBTest();
 
   ObservableList<String> genderList = FXCollections.observableArrayList("Male", "Female");
 
@@ -67,6 +71,7 @@ public class ControllerProfileSetup {
   private Label timeLabel;
 
   public void initialize (){
+    db.createConnection();
     setChoiceBox();
   }
 
@@ -90,6 +95,8 @@ public class ControllerProfileSetup {
 
   @FXML
   void submitPressed(ActionEvent event) throws IOException {
+    int age = parseInt(ageTextField.getText());
+    db.editAge(currentUser, age);
     Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
     Scene homeScene = new Scene(homeParent);
     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
