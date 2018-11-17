@@ -3,7 +3,7 @@ GetFit is a nutrional planner made in Java FX and that uses a Derby database to 
 will be able to track calories, set reminders on when to eat, etc.
 
 # More to come
-Like mentioned before it uses a Derby database to hold user information, but with future updates will also have a database to hold food information.
+Like mentioned before it uses a Derby database to hold user information, but with future updates will also have a table added to the database to hold food information.
 Once that is implemeneted you will be able to add your own food to the dabatase, and use it to look at the macros and add it to your food diary.
 With that you can keep track of all the calories you're eating per day.
 
