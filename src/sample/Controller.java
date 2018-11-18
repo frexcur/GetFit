@@ -1,3 +1,11 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This controller is used for the login screen
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import java.io.IOException;
@@ -14,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import static sample.Main.currentUser;
 import static sample.Main.database;
 
@@ -35,11 +44,24 @@ public class Controller {
   private Label passwordWrongLabel;
 
   @FXML
+  void initialize() {
+  }
+
+  /*
+  When the login button is pressed this method will first check to see if any fields are empty.
+  If not it will check if their username exist and if the password enters matches. If it does
+  you will get a popup box saying login successful. And you take to the home scene.
+   If not it will tell wrong username or password
+   */
+  @FXML
   void loginPress(ActionEvent event) throws IOException {
     String username = userNameText.getText();
     String password = passwordText.getText();
 
-    if (database.checkIfUsernameExist(username) && database.checkIfPasswordIsCorrect(username, password)) {
+    if (username.isEmpty() || password.isEmpty()) {
+      lab.setText("Empty field(s)");
+    } else if (database.checkIfUsernameExist(username) && database
+        .checkIfPasswordIsCorrect(username, password)) {
       Alert alert = new Alert(AlertType.INFORMATION);
       alert.setTitle(null);
       alert.setHeaderText(null);
@@ -52,19 +74,19 @@ public class Controller {
       Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
       window.setScene(homeScene);
       window.show();
-    }
-    else {
+    } else {
       lab.setText("Wrong username");
       passwordWrongLabel.setText("or password");
-
     }
   }
 
+
+  // Takes you to the signup page
   @FXML
   void signupPress(ActionEvent event) throws IOException {
     Parent signUpParent = FXMLLoader.load(getClass().getResource("Signup.fxml"));
     Scene signUpScene = new Scene(signUpParent);
-    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(signUpScene);
     window.show();
 

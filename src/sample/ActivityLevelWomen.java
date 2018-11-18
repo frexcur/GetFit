@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * Enum that holds the constant values for women activity level that will be used
+ * in the TDEE calculator to find calories needed
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 public enum ActivityLevelWomen {

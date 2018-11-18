@@ -1,3 +1,14 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This is the class thats used to make a connection to the database. It also
+ * contains methods for adding and/or deleting things from the database. Most
+ * methods are self explanatory because of the names given. Some still need to be
+ * cleaned up
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import java.sql.Connection;
@@ -6,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javafx.collections.ObservableList;
 
 public class DBTest {
 
@@ -42,31 +52,31 @@ public class DBTest {
     }
   }
 
-  private static void selectRestaurants() {
-    try {
-      stmt = conn.createStatement();
-      ResultSet results = stmt.executeQuery("select * from " + tableName);
-      ResultSetMetaData rsmd = results.getMetaData();
-      int numberCols = rsmd.getColumnCount();
-      for (int i = 1; i <= numberCols; i++) {
-        //print Column Names
-        System.out.print(rsmd.getColumnLabel(i) + "\t\t");
-      }
-
-      System.out.println("\n-------------------------------------------------");
-
-      while (results.next()) {
-        int id = results.getInt(1);
-        String restName = results.getString(2);
-        String cityName = results.getString(3);
-        System.out.println(id + "\t\t" + restName + "\t\t" + cityName);
-      }
-      results.close();
-      stmt.close();
-    } catch (SQLException sqlExcept) {
-      sqlExcept.printStackTrace();
-    }
-  }
+//  private static void selectRestaurants() {
+//    try {
+//      stmt = conn.createStatement();
+//      ResultSet results = stmt.executeQuery("select * from " + tableName);
+//      ResultSetMetaData rsmd = results.getMetaData();
+//      int numberCols = rsmd.getColumnCount();
+//      for (int i = 1; i <= numberCols; i++) {
+//        //print Column Names
+//        System.out.print(rsmd.getColumnLabel(i) + "\t\t");
+//      }
+//
+//      System.out.println("\n-------------------------------------------------");
+//
+//      while (results.next()) {
+//        int id = results.getInt(1);
+//        String restName = results.getString(2);
+//        String cityName = results.getString(3);
+//        System.out.println(id + "\t\t" + restName + "\t\t" + cityName);
+//      }
+//      results.close();
+//      stmt.close();
+//    } catch (SQLException sqlExcept) {
+//      sqlExcept.printStackTrace();
+//    }
+//  }
 
   private static void shutdown() {
     try {
@@ -238,6 +248,23 @@ public class DBTest {
       sqlExcept.printStackTrace();
     }
     return displayWeight(username);
+  }
+
+  public double displayHeight(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        int age = results.getInt(5);
+        double height = results.getDouble(7);
+        return height;
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+    return displayHeight(username);
   }
 
   public boolean checkIfUsernameExist(String username) {

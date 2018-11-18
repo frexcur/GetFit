@@ -1,3 +1,11 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * Another class currently not being used since the implementation of the database
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import java.util.HashMap;

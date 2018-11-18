@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This TDEE calculator is used to calculate the total amount of calories you will
+ * burn in a day baed on weight, height, age, and activity level
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 public class TDEECalculator {

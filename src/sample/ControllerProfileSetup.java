@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This is the controller for the initial setup of a profile. This will only be
+ * when someone just made a new account
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import static java.lang.Integer.parseInt;
@@ -23,6 +32,9 @@ import javafx.stage.Stage;
 public class ControllerProfileSetup {
 //  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 //  LocalDateTime now = LocalDateTime.now();
+
+  //These obeservable list are going to be used in a choice box for the user to pick their gender,
+  //activity level, and their goal for weight lost or gain
 
   ObservableList<String> genderList = FXCollections.observableArrayList("Male", "Female");
 
@@ -86,6 +98,11 @@ public class ControllerProfileSetup {
   void skipPressed(ActionEvent event) {
   }
 
+  /*
+  When the submit button is pressed the into from the text field, for certain things like age, are
+  converted into an int and put into the database as a new entry. The rest are also stored in the
+  same row
+   */
   @FXML
   void submitPressed(ActionEvent event) throws IOException {
     double height = parseInt(heightTextField.getText());

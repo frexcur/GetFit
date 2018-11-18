@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This account class as of right now isn't being used since implementation
+ * of the database
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import java.lang.reflect.Array;
@@ -13,8 +22,6 @@ public class Account implements AccountInfo {
   private int weight;
   private int age;
   private Gender gender;
-  static String currentUser;
-
 
   Account() {
     userName = "Default";

@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This class is used for testing databases functions and making sure the methods
+ * are actually executed
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 public class DatabaseDriver {
@@ -27,6 +36,10 @@ public class DatabaseDriver {
     db.editAge("frexcur", 30);
     db.editWeight("frexcur", 400);
     db.editGender("frexcur", 'M');
+    weight = db.displayWeight("JohnD");
+    System.out.println(weight);
+    db.insertUsername("Brandon");
+    db.editHeight("Brandon", 70);
   }
 
 }

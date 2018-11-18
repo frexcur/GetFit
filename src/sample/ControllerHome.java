@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This controller is for the home screen of the program. Still not fully
+ * implemented.
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import static sample.Main.currentUser;
@@ -10,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class ControllerHome {
@@ -17,18 +27,20 @@ public class ControllerHome {
   @FXML
   private MenuItem profileMenuButton;
 
+  @FXML
+  private WebView youtubeView;
+
   public void initialize (){
   }
 
 
   @FXML
   void profileMenuPressed(ActionEvent event) throws IOException {
+    Stage window = Main.getPrimaryStage();
     Parent profileParent = FXMLLoader.load(getClass().getResource("Profile.fxml"));
     Scene profileScene = new Scene(profileParent);
-    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(profileScene);
     window.show();
-
   }
 
 }

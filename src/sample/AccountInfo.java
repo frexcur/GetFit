@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This interface was made for both the account and premium account class
+ * to implement.
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 public interface AccountInfo {

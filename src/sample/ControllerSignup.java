@@ -1,5 +1,13 @@
-package sample;
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This controller is for the signup page where a user will need to go to
+ * make a new acount
+ *
+ *
+ ********************************************************************************/
 
+package sample;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -36,8 +44,11 @@ public class ControllerSignup {
   @FXML
   private TextField passwordText;
 
-
-
+  /*
+  When the button is pressed all text from the textbook are stored into variables. Once stored
+  the variables are used in method to make sure the username doesn't already exist in the database.
+  It also checks that the password isn't longer then 16 characters
+   */
   @FXML
   void signupPress(ActionEvent event) throws IOException {
     String firstName = firstNameText.getText();
@@ -73,7 +84,6 @@ public class ControllerSignup {
       window.show();
     }
   }
-
 }
 
 
