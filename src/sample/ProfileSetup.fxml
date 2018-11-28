@@ -72,7 +72,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="genderChoice" prefHeight="25.0" prefWidth="236.0" GridPane.columnIndex="1" />
+                              <ChoiceBox fx:id="genderChoice" onMouseEntered="#choiceBoxEntered" prefHeight="25.0" prefWidth="236.0" GridPane.columnIndex="1" />
                               <Label prefHeight="51.0" prefWidth="217.0" text="What do you identify as?" wrapText="true">
                                  <font>
                                     <Font size="16.0" />
@@ -97,7 +97,7 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <Button fx:id="submitButton" layoutX="533.0" layoutY="101.0" mnemonicParsing="false" onAction="#submitPressed" prefHeight="25.0" prefWidth="59.0" text="Submit" />
+                  <Button id="submitButton" fx:id="submitButton" layoutX="533.0" layoutY="101.0" mnemonicParsing="false" onAction="#submitPressed" prefHeight="25.0" prefWidth="59.0" stylesheets="@ButtonCSS.css" text="Submit" />
                   <Button fx:id="skipButton" layoutX="533.0" layoutY="153.0" mnemonicParsing="false" onAction="#skipPressed" prefHeight="25.0" prefWidth="59.0" text="Skip" />
                </children>
             </AnchorPane>

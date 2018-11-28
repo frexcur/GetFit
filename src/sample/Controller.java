@@ -23,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import static sample.Main.activityLevelString;
 import static sample.Main.currentUser;
 import static sample.Main.database;
 
@@ -67,6 +68,9 @@ public class Controller {
       alert.setHeaderText(null);
       alert.setContentText("Login successful!");
       currentUser = username;
+
+      String actLevel = database.displayActivityLevel(currentUser);
+      activityLevelString = actLevel;
 
       alert.showAndWait();
       Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));

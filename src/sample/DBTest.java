@@ -1,7 +1,7 @@
 /********************************************************************************
  * Author: Curiel, Freiddy
  *
- * This is the class thats used to make a connection to the database. It also
+ * This is the class that is used to make a connection to the database. It also
  * contains methods for adding and/or deleting things from the database. Most
  * methods are self explanatory because of the names given. Some still need to be
  * cleaned up
@@ -14,13 +14,12 @@ package sample;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBTest {
 
-  private static String dbURL = "jdbc:derby:C:/Apache/db-derby-10.14.2.0-bin/bin/MyDBHi;create=true;";
+  private static String dbURL = "jdbc:derby:C:/Apache/db-derby-10.14.2.0-bin/bin/MyDBHi";
   private static String tableName = "users";
   // jdbc Connection
   private static Connection conn = null;
@@ -28,6 +27,7 @@ public class DBTest {
 
   public static void main(String[] args) {
     createConnection();
+    System.out.println("connection successful");
     shutdown();
   }
 
@@ -136,6 +136,17 @@ public class DBTest {
     }
   }
 
+  public void insertActivityLevel(String activityLevel) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("insert into " + "USERS (ACTIVITYLEVEL) " + " values (" +
+          "'" + activityLevel + "')");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
   public void editAge(String username, int age) {
     try {
       stmt = conn.createStatement();
@@ -176,6 +187,46 @@ public class DBTest {
     }
   }
 
+  public void editActivityLevel(String username, String activityLevel) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set ACTIVITYLEVEL = '" + activityLevel +  "' where USERNAME = '" + username + "'");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editMainCalories(String username, int maintenanceCalories) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set MAINTENANCECALORIES = " + maintenanceCalories + " where USERNAME = '" + username + "'");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editGoalCalories(String username, int goalCalories) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set GOALCALORIES = " + goalCalories +  " where USERNAME = '" + username + "'");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
+  public void editGoal(String username, String goal) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set GOAL = '" + goal +  "' where USERNAME = '" + username + "'");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
   public void createAccount(String firstName, String lastName, String username,
       String password) {
     try {
@@ -194,8 +245,6 @@ public class DBTest {
       stmt = conn.createStatement();
       ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
       while (results.next()) {
-        double weight = results.getDouble(6);
-        double height = results.getDouble(7);
         String gender = results.getString(8);
         return gender;
       }
@@ -205,6 +254,70 @@ public class DBTest {
       sqlExcept.printStackTrace();
     }
     return displayGender(username);
+  }
+
+  public String displayActivityLevel(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        String activityLevel = results.getString(9);
+        return activityLevel;
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+    return displayActivityLevel(username);
+  }
+
+  public String displayGoal(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        String goal = results.getString(10);
+        return goal;
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+    return displayGoal(username);
+  }
+
+  public int displayMaintenanceCalories(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        int maintenanceCalories = results.getInt(11);
+        return maintenanceCalories;
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+    return displayMaintenanceCalories(username);
+  }
+
+  public int displayGoalCalories(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        int goalCalories = results.getInt(12);
+        return goalCalories;
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+    return displayGoalCalories(username);
   }
 
   public int displayAge(String username) {

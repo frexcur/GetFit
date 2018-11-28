@@ -11,13 +11,11 @@ package sample;
 
 import static sample.Main.currentUser;
 import static sample.Main.database;
-import static sample.Main.primaryStage;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -38,6 +36,18 @@ public class ControllerProfile {
   @FXML
   private Label heightLabel;
 
+  @FXML
+  private Label weightLabel;
+
+  @FXML
+  private Label goalLabel;
+
+  @FXML
+  private Label maintanenceCaloriesLabel;
+
+  @FXML
+  private Label activityLevelLabel;
+
 
   // As soon as the scene starts labels will be set to show the current users age, gender, height
   public void initialize () {
@@ -49,6 +59,27 @@ public class ControllerProfile {
 
     double height = database.displayHeight(currentUser);
     heightLabel.setText("" + height + " inches");
+
+    double weight = database.displayWeight(currentUser);
+    weightLabel.setText("" + weight + " lbs");
+
+    String weightGoal = database.displayGoal(currentUser);
+    goalLabel.setText("Goal is to: " + weightGoal);
+
+    String actLevel = database.displayActivityLevel(currentUser);
+    activityLevelLabel.setText(actLevel);
+
+    int maintenanceCalories = database.displayMaintenanceCalories(currentUser);
+    maintanenceCaloriesLabel.setText("" + maintenanceCalories);
+
+//    if (sex.equalsIgnoreCase("M")){
+//      ActivityLevelMen activityM = ActivityLevelMen.valueOf(weightGoal);
+//      calc.calculateTDEEMen(weight, height, age, activityM.getValue());
+//    }
+//    else {
+//      ActivityLevelWomen activityW = ActivityLevelWomen.valueOf(weightGoal);
+//      calc.calculateTDEEWomen(weight, height, age, activityW.getValue());
+//    }
   }
 
   // Takes you back to the home screen
@@ -59,5 +90,11 @@ public class ControllerProfile {
     Scene homeScene = new Scene(homeParent);
     window.setScene(homeScene);
     window.show();
+  }
+
+  public static void main(String[] args) {
+    String weightGoal = "Sedentary";
+    ActivityLevelMen activityM = ActivityLevelMen.valueOf(weightGoal.toUpperCase());
+    System.out.println(activityM.getValue());
   }
 }

@@ -10,11 +10,20 @@
 package sample;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Integer.remainderUnsigned;
+import static sample.Main.activityLevel;
+import static sample.Main.activityLevelString;
+import static sample.Main.calc;
 import static sample.Main.currentUser;
 import static sample.Main.database;
+import static sample.Main.goal;
+import static sample.Main.main;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +36,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ControllerProfileSetup {
@@ -50,6 +60,7 @@ public class ControllerProfileSetup {
   ObservableList<String> activityLevelListWomen = FXCollections.observableArrayList("Sedentary "
       + "(little to no exercise)", "Lightly Active (light exercise/sports 1-3 days/week)", "Moderately Active "
       + "(moderate exercise/sports 3-5 days/week)", "Very Active (hard exercise/sports 6-7 days a week)");
+
 
   @FXML
   private ChoiceBox genderChoice;
@@ -83,19 +94,36 @@ public class ControllerProfileSetup {
   }
 
   @FXML
-  void setChoiceBox() {
-    genderChoice.setItems(genderList);
-    goalChoice.setItems(goalList);
-    if (genderChoice.equals("Male")) {
-      activityLevelChoice.setItems(activityLevelListMen);
-    }
-    else {
-      activityLevelChoice.setItems(activityLevelListWomen);
-    }
+  void choiceBoxEntered(MouseEvent event) {
+    genderChoice.getSelectionModel().selectedIndexProperty().addListener(
+        new ChangeListener<Number>() {
+          @Override
+          public void changed(ObservableValue<? extends Number> observable, Number oldValue,
+              Number newValue) {
+            if (newValue.equals(0)) {
+              activityLevelChoice.setItems(activityLevelListMen);
+            }
+            else {
+              activityLevelChoice.setItems(activityLevelListWomen);
+            }
+          }
+        });
+
   }
 
   @FXML
-  void skipPressed(ActionEvent event) {
+  void setChoiceBox() {
+    genderChoice.setItems(genderList);
+    goalChoice.setItems(goalList);
+  }
+
+  @FXML
+  void skipPressed(ActionEvent event) throws IOException {
+    Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
+    Scene homeScene = new Scene(homeParent);
+    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    window.setScene(homeScene);
+    window.show();
   }
 
   /*
@@ -111,12 +139,144 @@ public class ControllerProfileSetup {
     database.editHeight(currentUser, height);
     database.editWeight(currentUser, weight);
     database.editAge(currentUser, age);
-    if (genderChoice.equals("Male")){
+
+    if (genderChoice.getSelectionModel().selectedIndexProperty().getValue() == 0){
       database.editGender(currentUser, 'M');
     }
     else {
       database.editGender(currentUser, 'F');
     }
+
+    String gender = database.displayGender(currentUser);
+
+    if (gender.equalsIgnoreCase("M")) {
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 0) {
+        activityLevel = 1.2;
+        activityLevelString = "Sedentary";
+        database.editActivityLevel(currentUser,"Sedentary");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEMen(weight, height, age, activityLevel));
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 1) {
+        activityLevel = 1.375;
+        activityLevelString = "Lightly Active";
+        database.editActivityLevel(currentUser,"Lightly Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEMen(weight, height, age, activityLevel));
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 2) {
+        activityLevel = 1.55;
+        activityLevelString = "Moderately Active";
+        database.editActivityLevel(currentUser,"Moderately Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEMen(weight, height, age, activityLevel));
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 3) {
+        activityLevel = 1.725;
+        activityLevelString = "Very Active";
+        database.editActivityLevel(currentUser,"Very Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEMen(weight, height, age, activityLevel));
+
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 4) {
+        activityLevel = 1.9;
+        activityLevelString = "Extremely Active";
+        database.editActivityLevel(currentUser,"Extremely Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEMen(weight, height, age, activityLevel));
+      }
+    }
+    else {
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 0) {
+        activityLevel = 1.1;
+        activityLevelString = "Sedentary";
+        database.editActivityLevel(currentUser,"Sedentary");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEWomen(weight, height, age, activityLevel));
+
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 1) {
+        activityLevel = 1.275;
+        activityLevelString = "Lightly Active";
+        database.editActivityLevel(currentUser,"Lightly Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEWomen(weight, height, age, activityLevel));
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 2) {
+        activityLevel = 1.35;
+        activityLevelString = "Moderately Active";
+        database.editActivityLevel(currentUser,"Moderately Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEWomen(weight, height, age, activityLevel));
+      }
+      if (activityLevelChoice.getSelectionModel().selectedIndexProperty().getValue() == 3) {
+        activityLevel = 1.525;
+        activityLevelString = "Very Active";
+        database.editActivityLevel(currentUser,"Very Active");
+        database.editMainCalories(currentUser, (int)calc.calculateTDEEWomen(weight, height, age, activityLevel));
+      }
+    }
+
+    int maintenanceCalories = database.displayMaintenanceCalories(currentUser);
+
+    switch (goalChoice.getSelectionModel().selectedIndexProperty().getValue()) {
+      case 0:
+        goal = "Lose 0.5 pounds per week";
+        database.editGoal(currentUser, "Lose 0.5 pounds per week");
+        database.editGoalCalories(currentUser, maintenanceCalories - 250);
+        break;
+      case 1:
+        goal = "Gain 0.5 pounds per week";
+        database.editGoal(currentUser, "Gain 0.5 pounds per week");
+        database.editGoalCalories(currentUser, maintenanceCalories + 250);
+        break;
+      case 2:
+        goal = "Lose 1 pound per week";
+        database.editGoal(currentUser, "Lose 1 pound per week");
+        database.editGoalCalories(currentUser, maintenanceCalories - 500);
+        break;
+      case 3:
+        goal = "Gain 1 pounds per week";
+        database.editGoal(currentUser, "Gain 1 pound per week");
+        database.editGoalCalories(currentUser, maintenanceCalories + 500);
+        break;
+      case 4:
+        goal = "Lose 1.5 pounds per week";
+        database.editGoal(currentUser, "Lose 1.5 pounds per week");
+        database.editGoalCalories(currentUser, maintenanceCalories - 750);
+        break;
+      case 5:
+        goal = "Gain 1.5 pounds per week";
+        database.editGoal(currentUser, "Gain 1.5 pounds per week");
+        database.editGoalCalories(currentUser, maintenanceCalories + 750);
+        break;
+      case 6:
+        goal = "Lose 2 pounds per week";
+        database.editGoal(currentUser, "Lose 2 pounds per week");
+        database.editGoalCalories(currentUser, maintenanceCalories - 1000);
+        break;
+      case 7:
+        goal = "Gain 2 pounds per week";
+        database.editGoal(currentUser, "Gain 2 pounds per week");
+        database.editGoalCalories(currentUser, maintenanceCalories + 1000);
+        break;
+      default:
+        System.out.println("something went wrong");
+    }
+
+//    if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 0) {
+//      goal = "Lose 0.5 pounds per week";
+//      database.editGoal(currentUser, "Lose 0.5 pounds per week");
+//    }
+//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 1){
+//      goal = "Gain 0.5 pounds per week";
+//      database.editGoal(currentUser, "Gain 0.5 pounds per week");
+//    }
+//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 2) {
+//      goal = "Lose 1 pound per week";
+//      database.editGoal(currentUser, "Lose 1 pound per week");
+//    }
+//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 3) {
+//      goal = "Gain 1 pounds per week";
+//      database.editGoal(currentUser, "Gain 1 pound per week");
+//    }
+//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 4) {
+//      goal = "Lose 1.5 pounds per week";
+//
+//    }
 
     Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
     Scene homeScene = new Scene(homeParent);
