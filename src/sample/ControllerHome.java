@@ -12,6 +12,7 @@ package sample;
 import static sample.Main.currentUser;
 import static sample.Main.database;
 import static sample.Main.goal;
+import static sample.ControllerDiary.totalCalories;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.IO;
 import java.io.IOException;
@@ -23,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
@@ -43,12 +45,18 @@ public class ControllerHome {
   @FXML
   private WebView youtubeView;
 
-  public void initialize (){
+  public void initialize () {
     int goalCalories = database.displayGoalCalories(currentUser);
-    int foodCalories = 0;
+    int foodCalories = (int)totalCalories;
     goalCaloriesLabel.setText("" + goalCalories);
     foodEatenLabel.setText("" + foodCalories);
     remainingCaloriesLabel.setText("" + (goalCalories - foodCalories));
+    if ((goalCalories - foodCalories < 0)) {
+      remainingCaloriesLabel.setTextFill(Color.RED);
+    }
+    else {
+      remainingCaloriesLabel.setTextFill(Color.GREEN);
+    }
     youtubeView.getEngine().load(
         "https://www.youtube.com/embed/XQp9krhzdXc");
   }
@@ -69,6 +77,15 @@ public class ControllerHome {
     Parent loginParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
     Scene loginScene = new Scene(loginParent);
     window.setScene(loginScene);
+    window.show();
+  }
+
+  @FXML
+  void diaryPressed(ActionEvent event) throws IOException{
+    Stage window = Main.getPrimaryStage();
+    Parent diaryParent = FXMLLoader.load(getClass().getResource("Diary.fxml"));
+    Scene diaryScene = new Scene(diaryParent);
+    window.setScene(diaryScene);
     window.show();
   }
 
