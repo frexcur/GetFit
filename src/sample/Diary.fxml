@@ -23,8 +23,8 @@
             <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Menu" translateX="3.0" translateY="15.0">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#homePressed" text="Home" />
+                  <MenuItem mnemonicParsing="false" onAction="#profilePressed" text="Profile" />
                   <MenuItem mnemonicParsing="false" text="Progress" />
-                  <MenuItem mnemonicParsing="false" text="Goals" />
                   <MenuItem mnemonicParsing="false" text="Settings" />
                   <MenuItem mnemonicParsing="false" onAction="#logoutPressed" text="Logout" />
               </items>
@@ -104,13 +104,14 @@
          <children>
             <VBox prefHeight="109.0" prefWidth="115.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch:" translateX="2.5" translateY="35.0" wrappingWidth="114.498046875">
+                  <Button mnemonicParsing="false" onAction="#addWater" text="Water +" translateX="50.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" translateX="2.5" translateY="20.0" wrappingWidth="114.498046875">
                      <font>
-                        <Font name="Thames" size="36.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lunchCaloriesLabel" prefHeight="17.0" prefWidth="109.0" text="Label" translateY="50.0" />
-                  <Label fx:id="breakfastCaloriesLabel" prefHeight="17.0" prefWidth="109.0" text="Label" translateY="-80.0" />
+                  <Label fx:id="lunchCaloriesLabel" prefHeight="17.0" prefWidth="109.0" translateY="20.0" />
+                  <Label fx:id="breakfastCaloriesLabel" prefHeight="17.0" prefWidth="109.0" translateY="-60.0" />
                </children>
             </VBox>
             <TableView fx:id="lunchTable" prefHeight="155.0" prefWidth="496.0">
@@ -129,12 +130,12 @@
          <children>
             <VBox prefHeight="140.0" prefWidth="107.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dinner:" translateX="2.5" translateY="35.0" wrappingWidth="113.853515625">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dinner" translateX="2.5" translateY="35.0" wrappingWidth="113.853515625">
                      <font>
-                        <Font name="Thames" size="36.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
-                  <Label fx:id="dinnerCaloriesLabel" prefHeight="17.0" prefWidth="109.0" text="Label" translateY="50.0" />
+                  <Label fx:id="dinnerCaloriesLabel" prefHeight="17.0" prefWidth="109.0" translateY="35.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" />
@@ -151,5 +152,6 @@
          </children>
       </HBox>
       <Label fx:id="totalCaloriesLabel" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="187.0" text="Label" translateX="400.0" translateY="180.0" />
+      <Label fx:id="waterLabel" layoutX="410.0" layoutY="340.0" prefHeight="17.0" prefWidth="194.0" text="Label" translateY="-175.0" />
    </children>
 </AnchorPane>
