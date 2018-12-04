@@ -20,12 +20,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class ControllerProfile {
 
   @FXML
   private MenuItem menuHomeButton;
+
+  @FXML
+  private ImageView profilePic;
 
   @FXML
   private Label ageLabel;
@@ -40,6 +45,9 @@ public class ControllerProfile {
   private Label weightLabel;
 
   @FXML
+  private Label currentWeightLabel;
+
+  @FXML
   private Label goalLabel;
 
   @FXML
@@ -51,6 +59,7 @@ public class ControllerProfile {
 
   // As soon as the scene starts labels will be set to show the current users age, gender, height
   public void initialize () {
+
     int age = database.displayAge(currentUser);
     ageLabel.setText("" + age);
 
@@ -58,18 +67,21 @@ public class ControllerProfile {
     sexLabel.setText("" + sex);
 
     double height = database.displayHeight(currentUser);
-    heightLabel.setText("" + height + " inches");
+    heightLabel.setText("" + height);
 
     double weight = database.displayWeight(currentUser);
-    weightLabel.setText("" + weight + " lbs");
+    currentWeightLabel.setText("" + weight);
+
+    double goalWeight = 185;
+    weightLabel.setText(""+ goalWeight);
 
     String weightGoal = database.displayGoal(currentUser);
-    goalLabel.setText("Goal is to: " + weightGoal);
+    goalLabel.setText("" + weightGoal);
 
     String actLevel = database.displayActivityLevel(currentUser);
     activityLevelLabel.setText(actLevel);
 
-    int maintenanceCalories = database.displayMaintenanceCalories(currentUser);
+    int maintenanceCalories = database.displayGoalCalories(currentUser);
     maintanenceCaloriesLabel.setText("" + maintenanceCalories);
 
 //    if (sex.equalsIgnoreCase("M")){
@@ -92,9 +104,22 @@ public class ControllerProfile {
     window.show();
   }
 
-  public static void main(String[] args) {
-    String weightGoal = "Sedentary";
-    ActivityLevelMen activityM = ActivityLevelMen.valueOf(weightGoal.toUpperCase());
-    System.out.println(activityM.getValue());
+  @FXML
+  void logoutPressed(ActionEvent event) throws IOException {
+    Stage window = Main.getPrimaryStage();
+    Parent loginParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+    Scene loginScene = new Scene(loginParent);
+    window.setScene(loginScene);
+    window.show();
   }
+
+  @FXML
+  void diaryPressed(ActionEvent event) throws IOException{
+    Stage window = Main.getPrimaryStage();
+    Parent diaryParent = FXMLLoader.load(getClass().getResource("Diary.fxml"));
+    Scene diaryScene = new Scene(diaryParent);
+    window.setScene(diaryScene);
+    window.show();
+  }
+
 }
