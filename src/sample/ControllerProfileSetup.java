@@ -18,10 +18,10 @@ import static sample.Main.currentUser;
 import static sample.Main.database;
 import static sample.Main.goal;
 import static sample.Main.main;
-
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -32,6 +32,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -76,6 +78,9 @@ public class ControllerProfileSetup {
 
   @FXML
   private TextField heightTextField;
+
+  @FXML
+  private TextField goalWeightText;
 
   @FXML
   private TextField weightTextField;
@@ -133,12 +138,30 @@ public class ControllerProfileSetup {
    */
   @FXML
   void submitPressed(ActionEvent event) throws IOException {
-    double height = parseInt(heightTextField.getText());
-    double weight = parseInt(weightTextField.getText());
+
+    try {
+      double height = Double.parseDouble(heightTextField.getText());
+      double goalWeight = Double.parseDouble(goalWeightText.getText());
+      double weight = Double.parseDouble(weightTextField.getText());
+      int age = parseInt(ageTextField.getText());
+    }
+    catch (NumberFormatException n){
+      Alert alert = new Alert(AlertType.INFORMATION);
+      alert.setTitle(null);
+      alert.setHeaderText(null);
+      alert.setContentText("User numbers only!");
+
+      alert.showAndWait();
+    }
+    double height = Double.parseDouble(heightTextField.getText());
+    double goalWeight = Double.parseDouble(goalWeightText.getText());
+    double weight = Double.parseDouble(weightTextField.getText());
     int age = parseInt(ageTextField.getText());
+
     database.editHeight(currentUser, height);
     database.editWeight(currentUser, weight);
     database.editAge(currentUser, age);
+    database.editGoalWeight(currentUser, goalWeight);
 
     if (genderChoice.getSelectionModel().selectedIndexProperty().getValue() == 0){
       database.editGender(currentUser, 'M');
