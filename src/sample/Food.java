@@ -13,7 +13,6 @@ public class Food {
   public final SimpleDoubleProperty proteins;
   public final SimpleDoubleProperty carbs;
 
-
   public Food(String name, int calories, double servings, double fat, double proteins, double carbs) {
     this.name = new SimpleStringProperty(name);
     this.calories = new SimpleIntegerProperty(calories);
@@ -22,7 +21,6 @@ public class Food {
     this.proteins = new SimpleDoubleProperty(proteins);
     this.carbs = new SimpleDoubleProperty(carbs);
     this.caloriesWithServings = calories * servings;
-
   }
 
   public String getName() {
