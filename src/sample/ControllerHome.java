@@ -1,8 +1,7 @@
 /********************************************************************************
  * Author: Curiel, Freiddy
  *
- * This controller is for the home screen of the program. Still not fully
- * implemented.
+ * This controller is for the home screen of the program.
  *
  *
  ********************************************************************************/
