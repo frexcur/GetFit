@@ -418,8 +418,6 @@ public class DBTest {
     return passwordCorrect;
   }
 
-
-
 //  public void createAccount(String firstName, String lastName, String username,
 //      String password, int age, double weight, double height) {
 //    try {
