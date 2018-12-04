@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * Main method of the application. Multiple static variables are initiated here
+ * to be used later in the program.
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import javafx.application.Application;
@@ -11,6 +20,10 @@ public class Main extends Application {
   public static String currentUser;
   static DBTest database = new DBTest();
   public static Stage primaryStage;
+  public static double activityLevel;
+  public static String activityLevelString;
+  public static String goal;
+  public static TDEECalculator calc = new TDEECalculator();
 
   @Override
   public void start(Stage primaryStage) throws Exception {
