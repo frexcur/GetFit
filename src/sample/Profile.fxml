@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,95 +17,127 @@
     <HBox prefHeight="65.0" prefWidth="600.0" style="-fx-background-color: #1f4687;" BorderPane.alignment="CENTER">
       <children>
 
-        <MenuButton mnemonicParsing="false" translateX="3.0" translateY="15.0">
+        <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" text="Menu" translateX="3.0" translateY="17.0">
           <items>
-            <MenuItem fx:id="menuHomeButton" mnemonicParsing="false" onAction="#menuHomeButtonPressed" text="Home" />
-            <MenuItem mnemonicParsing="false" text="Diary" />
+            <MenuItem mnemonicParsing="false" onAction="#menuHomeButtonPressed" text="Home" />
+            <MenuItem mnemonicParsing="false" onAction="#diaryPressed" text="Diary" />
             <MenuItem mnemonicParsing="false" text="Progress" />
             <MenuItem mnemonicParsing="false" text="Settings" />
-            <MenuItem mnemonicParsing="false" text="Logout" />
+            <MenuItem mnemonicParsing="false" onAction="#logoutPressed" text="Logout" />
           </items>
         </MenuButton>
-        <HBox prefHeight="54.0" prefWidth="603.0" HBox.hgrow="ALWAYS">
+        <HBox prefHeight="65.0" prefWidth="792.0" HBox.hgrow="ALWAYS">
                <children>
-              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" translateX="245.0" translateY="15.0" wrappingWidth="104.11669921875">
+              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="My Profile" translateX="160.0" translateY="15.0" wrappingWidth="175.11669921875">
                 <font>
-                  <Font name="Poor Richard" size="25.0" />
+                  <Font name="Poor Richard" size="36.0" />
                 </font>
               </Text>
                </children></HBox>
-        <HBox prefHeight="56.0" prefWidth="180.0" HBox.hgrow="ALWAYS" />
-        <ImageView fitHeight="50.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true" translateX="-2.0" translateY="2.0">
-          <image>
-            <Image url="@ProfilePic.jpg" />
-          </image>
-        </ImageView>
       </children>
     </HBox>
   </top>
   <center>
-    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+    <VBox prefHeight="302.0" prefWidth="620.0" BorderPane.alignment="CENTER">
       <children>
-        <VBox prefHeight="8.0" prefWidth="600.0" style="-fx-background-color: Gray;" />
-        <VBox prefHeight="169.0" prefWidth="620.0">
-          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Info" translateX="8.0" wrappingWidth="129.15234375">
-              <font>
-                <Font size="19.0" />
-              </font>
-            </Text>
-            <VBox prefHeight="5.0" prefWidth="620.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age" translateX="8.0">
-              <font>
-                <Font name="System Bold" size="16.0" />
-              </font>
-            </Text>
-            <VBox prefHeight="3.0" prefWidth="620.0" />
-                  <Label fx:id="ageLabel" alignment="CENTER" prefHeight="17.0" prefWidth="57.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" translateX="8.0">
-              <font>
-                <Font name="System Bold" size="16.0" />
-              </font>
-            </Text>
-            <VBox prefHeight="3.0" prefWidth="620.0">
-                     <children>
-                        <Label fx:id="sexLabel" alignment="CENTER" prefHeight="17.0" prefWidth="57.0" />
-                     </children></VBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height" translateX="8.0">
-              <font>
-                <Font name="System Bold" size="16.0" />
-              </font>
-            </Text>
-                  <Label fx:id="heightLabel" alignment="CENTER" prefHeight="17.0" prefWidth="113.0" />
-          </children>
-        </VBox>
-        <VBox prefHeight="8.0" prefWidth="620.0" style="-fx-background-color: Gray;" />
-        <VBox prefHeight="152.0" prefWidth="620.0">
-          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goals" translateX="8.0">
-              <font>
-                <Font size="19.0" />
-              </font>
-            </Text>
-            <VBox prefHeight="5.0" prefWidth="620.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" translateX="8.0">
-              <font>
-                <Font name="System Bold" size="16.0" />
-              </font>
-            </Text>
-                  <Label fx:id="weightLabel" alignment="CENTER" prefHeight="17.0" prefWidth="85.0" />
-                  <Label fx:id="goalLabel" prefHeight="17.0" prefWidth="241.0" />
-            <VBox prefHeight="3.0" prefWidth="620.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Calories" translateX="8.0">
-              <font>
-                <Font name="System Bold" size="16.0" />
-              </font>
-            </Text>
-                  <Label fx:id="maintanenceCaloriesLabel" alignment="CENTER" prefHeight="17.0" prefWidth="117.0" />
-            <Text fill="#979393" strokeType="OUTSIDE" strokeWidth="0.0" text="Activity Level: " translateX="8.0" />
-                  <Label fx:id="activityLevelLabel" alignment="CENTER" prefHeight="17.0" prefWidth="147.0" />
-          </children>
-        </VBox>
+            <SplitPane dividerPositions="0.43527508090614886" prefHeight="435.0" prefWidth="620.0">
+              <items>
+                  <ImageView fitHeight="338.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@gymselfie.jpg" />
+                     </image>
+                  </ImageView>
+                  <SplitPane dividerPositions="0.48348348348348347" orientation="VERTICAL" prefHeight="301.0" prefWidth="338.0">
+                    <items>
+                    <VBox prefHeight="158.0" prefWidth="291.0">
+                      <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goals" translateX="8.0">
+                          <font>
+                            <Font size="19.0" />
+                          </font>
+                        </Text>
+                        <VBox prefHeight="5.0" prefWidth="620.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Weight" translateX="8.0">
+                          <font>
+                            <Font name="System Bold" size="16.0" />
+                          </font>
+                        </Text>
+                              <Label fx:id="weightLabel" prefHeight="24.0" prefWidth="52.0" text="Weight" translateX="8.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="goalLabel" prefHeight="18.0" prefWidth="130.0" text="Goal Weight Loss" translateX="8.0" />
+                        <VBox prefHeight="3.0" prefWidth="620.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Calories" translateX="8.0">
+                          <font>
+                            <Font name="System Bold" size="16.0" />
+                          </font>
+                        </Text>
+                              <Label fx:id="maintanenceCaloriesLabel" prefHeight="24.0" prefWidth="54.0" text="Calories" translateX="8.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="activityLevelLabel" layoutX="10.0" layoutY="130.0" text="Activity Levels" translateX="8.0" />
+                      </children>
+                    </VBox>
+                    <VBox prefHeight="169.0" prefWidth="620.0">
+                      <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Info" translateX="8.0" wrappingWidth="129.15234375">
+                          <font>
+                            <Font size="19.0" />
+                          </font>
+                        </Text>
+                        <VBox prefHeight="5.0" prefWidth="620.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age" translateX="8.0">
+                          <font>
+                            <Font name="System Bold" size="16.0" />
+                          </font>
+                        </Text>
+                              <Label fx:id="ageLabel" prefHeight="24.0" prefWidth="54.0" text="Age" translateX="8.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                        <VBox prefHeight="3.0" prefWidth="620.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" translateX="8.0">
+                          <font>
+                            <Font name="System Bold" size="16.0" />
+                          </font>
+                        </Text>
+                              <Label fx:id="sexLabel" layoutX="10.0" layoutY="63.0" prefHeight="24.0" prefWidth="54.0" text="Gender" translateX="8.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                        <VBox prefHeight="0.0" prefWidth="307.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height" translateX="8.0">
+                          <font>
+                            <Font name="System Bold" size="16.0" />
+                          </font>
+                        </Text>
+                              <Label fx:id="heightLabel" layoutX="10.0" layoutY="112.0" prefHeight="24.0" prefWidth="54.0" text="Height" translateX="8.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" translateX="8.0">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                              <Label fx:id="currentWeightLabel" prefHeight="21.0" prefWidth="136.0" text="Current Weight" translateX="8.0" translateY="-5.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                      </children>
+                    </VBox>
+                    </items>
+                  </SplitPane>
+              </items>
+            </SplitPane>
       </children>
     </VBox>
   </center>
