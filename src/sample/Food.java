@@ -1,3 +1,12 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This is the food class. Its used to create new foods to put in the observable
+ * list in the diary
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import javafx.beans.property.SimpleDoubleProperty;
