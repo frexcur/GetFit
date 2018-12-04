@@ -23,6 +23,7 @@ public class ControllerDiary {
   static double dinnerTotalCalories = 0;
   static double lunchTotalCalories = 0;
   static double totalCalories= 0;
+  static int water = 0;
 
   static ObservableList <Food> breakfast =
       FXCollections.observableArrayList();
@@ -57,6 +58,9 @@ public class ControllerDiary {
 
   @FXML
   private TextField carbsText;
+
+  @FXML
+  private Label waterLabel;
 
   @FXML
   private Label breakfastCaloriesLabel;
@@ -197,10 +201,11 @@ public class ControllerDiary {
     lunchTable.setItems(lunch);
     dinnerTable.setItems(dinner);
 
-    breakfastCaloriesLabel.setText("Breakfast: " + breakfastCalories);
-    lunchCaloriesLabel.setText("Lunch: " + lunchCalories);
-    dinnerCaloriesLabel.setText("Dinner: " + dinnerCalories);
+    breakfastCaloriesLabel.setText("" + breakfastTotalCalories);
+    lunchCaloriesLabel.setText("" + lunchTotalCalories);
+    dinnerCaloriesLabel.setText("" + dinnerTotalCalories);
     totalCaloriesLabel.setText("Total calories: " + totalCalories);
+    waterLabel.setText("Cups of water: " + water);
 
   }
 
@@ -217,7 +222,7 @@ public class ControllerDiary {
 
     breakfastTotalCalories += foodCalories;
     totalCalories += foodCalories;
-    breakfastCaloriesLabel.setText("Breakfast: " + breakfastTotalCalories);
+    breakfastCaloriesLabel.setText("" + breakfastTotalCalories);
     totalCaloriesLabel.setText("Total calories: " + totalCalories);
 
     Food food1 = new Food (name, calories, servings, fat, protein, carbs);
@@ -234,6 +239,7 @@ public class ControllerDiary {
 
   }
 
+
   @FXML
   void addToDinner(ActionEvent event) {
     String name = nameText.getText();
@@ -247,7 +253,7 @@ public class ControllerDiary {
 
     dinnerTotalCalories += foodCalories;
     totalCalories += foodCalories;
-    dinnerCaloriesLabel.setText("Dinner: " + dinnerTotalCalories);
+    dinnerCaloriesLabel.setText("" + dinnerTotalCalories);
     totalCaloriesLabel.setText("Total calories: " + totalCalories);
 
     Food food1 = new Food (name, calories, servings, fat, protein, carbs);
@@ -277,7 +283,7 @@ public class ControllerDiary {
 
     lunchTotalCalories += foodCalories;
     totalCalories += foodCalories;
-    lunchCaloriesLabel.setText("Lunch: " + lunchTotalCalories);
+    lunchCaloriesLabel.setText("" + lunchTotalCalories);
     totalCaloriesLabel.setText("Total calories: " + totalCalories);
 
     Food food1 = new Food (name, calories, servings, fat, protein, carbs);
@@ -293,6 +299,11 @@ public class ControllerDiary {
     carbsText.clear();
   }
 
+  @FXML
+  void addWater(ActionEvent event) {
+    water++;
+    waterLabel.setText("Cups of water: " + water);
+  }
   @FXML
   void homePressed(ActionEvent event) throws IOException {
     Stage window = Main.getPrimaryStage();
@@ -311,4 +322,12 @@ public class ControllerDiary {
     window.show();
   }
 
+  @FXML
+  void profilePressed(ActionEvent event) throws IOException {
+    Stage window = Main.getPrimaryStage();
+    Parent profileParent = FXMLLoader.load(getClass().getResource("Profile.fxml"));
+    Scene profileScene = new Scene(profileParent);
+    window.setScene(profileScene);
+    window.show();
+  }
 }
