@@ -1,3 +1,13 @@
+/********************************************************************************
+ * Author: Curiel, Freiddy
+ *
+ * This controller is for the diary of the program. Users will be able to add
+ * food and keep track of calories, fat, protein, etc. Calories from main meals
+ * and total calories will be totaled up in labels
+ *
+ *
+ ********************************************************************************/
+
 package sample;
 
 import java.io.IOException;
