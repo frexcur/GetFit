@@ -23,6 +23,7 @@ public class Main extends Application {
   public static double activityLevel;
   public static String activityLevelString;
   public static String goal;
+  static String imagePath;
   public static TDEECalculator calc = new TDEECalculator();
 
   @Override

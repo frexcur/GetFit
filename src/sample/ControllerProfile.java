@@ -9,7 +9,7 @@
 
 package sample;
 
-import static sample.ControllerProfileSetup.imagePath;
+import static sample.Main.imagePath;
 import static sample.Main.currentUser;
 import static sample.Main.database;
 import static sample.Main.primaryStage;

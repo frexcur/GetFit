@@ -19,6 +19,7 @@ import static sample.Main.database;
 import static sample.Main.goal;
 import static sample.Main.main;
 import static sample.Main.primaryStage;
+import static sample.Main.imagePath;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -70,7 +71,6 @@ public class ControllerProfileSetup {
 
   private FileChooser fileChooser;
 
-  static String imagePath;
 
   private File file;
 
@@ -150,7 +150,6 @@ public class ControllerProfileSetup {
     file = fileChooser.showOpenDialog(primaryStage);
     if (file != null) {
       imagePath = file.toURI().toString();
-      Image image = new Image(imagePath);
     }
   }
 
@@ -171,20 +170,6 @@ public class ControllerProfileSetup {
   @FXML
   void submitPressed(ActionEvent event) throws IOException {
 
-    try {
-      double height = Double.parseDouble(heightTextField.getText());
-      double goalWeight = Double.parseDouble(goalWeightText.getText());
-      double weight = Double.parseDouble(weightTextField.getText());
-      int age = parseInt(ageTextField.getText());
-    }
-    catch (NumberFormatException n){
-      Alert alert = new Alert(AlertType.INFORMATION);
-      alert.setTitle(null);
-      alert.setHeaderText(null);
-      alert.setContentText("User numbers only!");
-
-      alert.showAndWait();
-    }
     double height = Double.parseDouble(heightTextField.getText());
     double goalWeight = Double.parseDouble(goalWeightText.getText());
     double weight = Double.parseDouble(weightTextField.getText());
