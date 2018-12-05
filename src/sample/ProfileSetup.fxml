@@ -52,6 +52,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -67,7 +68,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="51.0" prefWidth="247.0" text="How much do you weigh?" wrapText="true" GridPane.rowIndex="3">
+                              <Label prefHeight="51.0" prefWidth="247.0" text="How much do you weigh?" wrapText="true" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -80,25 +81,32 @@
                               </Label>
                               <TextField fx:id="ageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="heightTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="weightTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <ChoiceBox fx:id="goalChoice" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label prefHeight="50.0" prefWidth="221.0" text="Weekly goal?" GridPane.rowIndex="4">
+                              <TextField fx:id="weightTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <ChoiceBox fx:id="goalChoice" prefHeight="25.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label prefHeight="50.0" prefWidth="221.0" text="Weekly goal?" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="17.0" prefWidth="219.0" text="Activity Level?" GridPane.rowIndex="5">
+                              <Label prefHeight="17.0" prefWidth="219.0" text="Activity Level?" GridPane.rowIndex="6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="activityLevelChoice" prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <ChoiceBox fx:id="activityLevelChoice" prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label prefHeight="17.0" prefWidth="272.0" text="Goal weight?" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="goalWeightText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                      </children>
                   </VBox>
                   <Button id="submitButton" fx:id="submitButton" layoutX="533.0" layoutY="101.0" mnemonicParsing="false" onAction="#submitPressed" prefHeight="25.0" prefWidth="59.0" stylesheets="@ButtonCSS.css" text="Submit" />
                   <Button fx:id="skipButton" layoutX="533.0" layoutY="153.0" mnemonicParsing="false" onAction="#skipPressed" prefHeight="25.0" prefWidth="59.0" text="Skip" />
+                  <Button layoutX="533.0" layoutY="55.0" mnemonicParsing="false" onAction="#uploadPicPressed" text="Upload Pic" />
                </children>
             </AnchorPane>
         </items>
