@@ -8,6 +8,7 @@
 
 package sample;
 
+import static sample.ControllerProfileSetup.imagePath;
 import static sample.Main.currentUser;
 import static sample.Main.database;
 import static sample.Main.goal;
@@ -23,6 +24,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -31,6 +34,9 @@ public class ControllerHome {
 
   @FXML
   private MenuItem profileMenuButton;
+
+  @FXML
+  private ImageView homeProfilePic;
 
   @FXML
   private Label goalCaloriesLabel;
@@ -45,6 +51,9 @@ public class ControllerHome {
   private WebView youtubeView;
 
   public void initialize () {
+    Image image = new Image(imagePath);
+    homeProfilePic.setImage(image);
+
     int goalCalories = database.displayGoalCalories(currentUser);
     int foodCalories = (int)totalCalories;
     goalCaloriesLabel.setText("" + goalCalories);
