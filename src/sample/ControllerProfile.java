@@ -9,9 +9,12 @@
 
 package sample;
 
+import static sample.ControllerProfileSetup.imagePath;
 import static sample.Main.currentUser;
 import static sample.Main.database;
+import static sample.Main.primaryStage;
 
+import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,9 +25,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class ControllerProfile {
+
+  private FileChooser fileChooser;
+
+  private File file;
 
   @FXML
   private MenuItem menuHomeButton;
@@ -60,6 +69,9 @@ public class ControllerProfile {
   // As soon as the scene starts labels will be set to show the current users age, gender, height
   public void initialize () {
 
+    Image image =  new Image (imagePath);
+    profilePic.setImage(image);
+
     int age = database.displayAge(currentUser);
     ageLabel.setText("" + age);
 
@@ -72,7 +84,7 @@ public class ControllerProfile {
     double weight = database.displayWeight(currentUser);
     currentWeightLabel.setText("" + weight);
 
-    double goalWeight = 185;
+    double goalWeight = database.displayGoalWeight(currentUser);
     weightLabel.setText(""+ goalWeight);
 
     String weightGoal = database.displayGoal(currentUser);
