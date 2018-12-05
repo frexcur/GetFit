@@ -7,7 +7,7 @@ Once that is implemented you will be able to add your own food to the dabatase, 
 With that you can keep track of all the calories you're eating per day.
 
 # Information
-A lot of websites were used for information and help to make this project. These were some of the most important ones:
+A lot of websites were used for information and help to make this project. These were some of the more important ones:
 
 https://www.w3schools.com/
 
