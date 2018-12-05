@@ -18,10 +18,12 @@ import static sample.Main.currentUser;
 import static sample.Main.database;
 import static sample.Main.goal;
 import static sample.Main.main;
+import static sample.Main.primaryStage;
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.InputMismatchException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -38,7 +40,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class ControllerProfileSetup {
@@ -63,6 +68,17 @@ public class ControllerProfileSetup {
       + "(little to no exercise)", "Lightly Active (light exercise/sports 1-3 days/week)", "Moderately Active "
       + "(moderate exercise/sports 3-5 days/week)", "Very Active (hard exercise/sports 6-7 days a week)");
 
+  private FileChooser fileChooser;
+
+  static String imagePath;
+
+  private File file;
+
+  private Desktop desktop = Desktop.getDesktop();
+
+  private Image image;
+
+  private FileInputStream fis;
 
   @FXML
   private ChoiceBox genderChoice;
@@ -96,6 +112,12 @@ public class ControllerProfileSetup {
 
   public void initialize (){
     setChoiceBox();
+    fileChooser = new FileChooser();
+    fileChooser.getExtensionFilters().addAll(
+        //new ExtensionFilter("Text Files", "*.txt"),
+        new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        //new ExtensionFilter("All Files", "*.*")
+    );
   }
 
   @FXML
@@ -120,6 +142,16 @@ public class ControllerProfileSetup {
   void setChoiceBox() {
     genderChoice.setItems(genderList);
     goalChoice.setItems(goalList);
+  }
+
+  @FXML
+  void uploadPicPressed(ActionEvent event) throws IOException {
+
+    file = fileChooser.showOpenDialog(primaryStage);
+    if (file != null) {
+      imagePath = file.toURI().toString();
+      Image image = new Image(imagePath);
+    }
   }
 
   @FXML
@@ -279,27 +311,6 @@ public class ControllerProfileSetup {
       default:
         System.out.println("something went wrong");
     }
-
-//    if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 0) {
-//      goal = "Lose 0.5 pounds per week";
-//      database.editGoal(currentUser, "Lose 0.5 pounds per week");
-//    }
-//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 1){
-//      goal = "Gain 0.5 pounds per week";
-//      database.editGoal(currentUser, "Gain 0.5 pounds per week");
-//    }
-//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 2) {
-//      goal = "Lose 1 pound per week";
-//      database.editGoal(currentUser, "Lose 1 pound per week");
-//    }
-//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 3) {
-//      goal = "Gain 1 pounds per week";
-//      database.editGoal(currentUser, "Gain 1 pound per week");
-//    }
-//    else if (goalChoice.getSelectionModel().selectedIndexProperty().getValue() == 4) {
-//      goal = "Lose 1.5 pounds per week";
-//
-//    }
 
     Parent homeParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
     Scene homeScene = new Scene(homeParent);
