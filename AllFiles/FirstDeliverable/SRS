@@ -1,0 +1,74 @@
+Get Lit, Get Fit
+Software Requirements Specification
+CEN 3031, FALL, 2018
+
+Modification history: 
+Version 	Date 	Who 	Comment 
+v1.0 	10/15/18	Group	Mapped out what the application will have. Three different screens were also created to start the design process. We added more shall statements to further define our program. 
+... 			 
+ 
+
+Team Name: Syntacky
+Team Members:
+•	Hannah Andrews: handrews0101@eagle.fgcu.edu
+•	Cody Buckley: cbuckley6232@eagle.fgcu.edu
+•	Freddy Curiel: fcuriel4360@eagle.fgcu.edu
+•	Zechariah Dominguez: zrdominguez1017@eagle.fgcu.edu
+•	Reiner Escalona:  rescalona4605@eagle.fgcu.edu
+
+
+Contents of this Document
+Introduction
+•	Software to be Produced 
+•	Definition, Acronyms, and Abbreviations
+Product Overview
+•	Assumptions 
+•	Use Case Diagram 
+•	Use Case Descriptions
+Specific Requirements
+
+
+SECTION 1: Introduction
+Software to be Produced:
+•	This software program is a desktop application that will aid in ones fitness journey. The application will allow the user to track their nutritional information, along with giving them example diets that they can follow. The system will also have different diet types such as vegan, or paleo to accommodate those with a different diet regimen. The system will also allow the user to track their workouts and have a number of workouts to follow according to their goals (ie. lose weight, gain weight, gain muscle, ect.). Each plan will be customized by the users sex, weight, and height. The system takes multiple factors into account when aiding in the users weight-loss journey including things such as water intake, different foods, and even weekly progress pictures. The user will receive either daily or weekly motivational quotes and also a weekly summary of their progress to show how they are progressing in the program. 
+ ur
+
+
+Definitions, Acronyms, and Abbreviations:
+•	None
+
+SECTION 2: Product Overview
+Assumptions:
+•	System will have Windows10 or MacOS
+•	The system will have at least 2GB of RAM
+•	The system will have at least an i3 processor 
+•	Able to run on GOTS products (should government sectors choose to use the program)
+•	Able to run on COTS products 
+•	The system has integrated graphics 
+•	The system is for home use 
+•	User will have availability to the internet 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
