@@ -8,6 +8,7 @@
 
 package sample;
 
+import java.io.File;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import static sample.Main.activityLevelString;
@@ -93,6 +96,10 @@ public class Controller {
     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     window.setScene(signUpScene);
     window.show();
+  }
+
+  @FXML
+  void chamgePicture(MouseEvent event) {
 
   }
 }
