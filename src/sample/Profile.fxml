@@ -4,7 +4,6 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -42,11 +41,7 @@
       <children>
             <SplitPane dividerPositions="0.43527508090614886" prefHeight="435.0" prefWidth="620.0">
               <items>
-                  <ImageView fitHeight="338.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@gymselfie.jpg" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="profilePic" fitHeight="338.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true" />
                   <SplitPane dividerPositions="0.48348348348348347" orientation="VERTICAL" prefHeight="301.0" prefWidth="338.0">
                     <items>
                     <VBox prefHeight="158.0" prefWidth="291.0">
