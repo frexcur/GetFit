@@ -8,6 +8,7 @@ Like mentioned before it uses a Derby database to hold user information, but wit
 To install and run is simple, just click on the AllFiles folder. You will unzip the GetLitGetFit2jar.zip. After that navigate to the GetLitGetFit2.jar and run it.
 
 *Disclaimer*
+
 Unfortunately only the profile, home, diary, and logout menu buttons work. 
 
 
