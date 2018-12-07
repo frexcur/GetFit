@@ -1,5 +1,5 @@
 # GetFit
-GetFit is a nutrional planner made in Java FX and that uses a Derby database to hold user information. Users will be able to set a profile picture, keep track of calories ate for each part of day, and get back the calories needed to hit their goals based on their personal information.
+GetFit is a nutritional planner made in Java FX and that uses a Derby database to hold user information. Users will be able to set a profile picture, keep track of calories ate for each part of day, and get back the calories needed to hit their goals based on their personal information.
 
 Like mentioned before it uses a Derby database to hold user information, but with future updates will also have a table added to the database to hold food information.
 
