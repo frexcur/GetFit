@@ -14,7 +14,8 @@ Unfortunately only the profile, home, diary, and logout menu buttons work.
 # Demo
 Making an account with your own picture is quick and easy
 
-<div style="width:100%;height:0;padding-bottom:71%;position:relative;"><iframe src="https://giphy.com/embed/vgAALVVG10zV0DeuBV" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/vgAALVVG10zV0DeuBV">via GIPHY</a></p>
+![](CreatingAccount.gif)
+
 
 # Information
 A lot of websites were used for information and help to make this project. These were some of the more important ones:
