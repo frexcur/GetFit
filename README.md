@@ -12,7 +12,7 @@ To install and run is simple, just click on the AllFiles folder. You will unzip 
 Unfortunately only the profile, home, diary, and logout menu buttons work. 
 
 # Demo
-![](Get Fit demo.gif)
+![](GetFit demo.gif)
 
 
 # Information
