@@ -16,10 +16,6 @@ Making an account with your own picture is quick and easy
 
 ![](CreatingAccount.gif)
 
-![](GetFit demo.gif)
-
-
-
 # Information
 A lot of websites were used for information and help to make this project. These were some of the more important ones:
 
