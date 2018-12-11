@@ -11,6 +11,9 @@ To install and run is simple, just click on the AllFiles folder. You will unzip 
 
 Unfortunately only the profile, home, diary, and logout menu buttons work. 
 
+# Demo
+![](Get Fit demo.gif)
+
 
 # Information
 A lot of websites were used for information and help to make this project. These were some of the more important ones:
