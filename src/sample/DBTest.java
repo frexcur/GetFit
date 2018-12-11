@@ -19,7 +19,7 @@ import java.sql.Statement;
 
 public class DBTest {
 
-  private static String dbURL = "jdbc:derby:C:/Apache/db-derby-10.14.2.0-bin/bin/MyDBHi";
+  private static String dbURL = "jdbc:derby:C:/Apache/db-derby-10.14.2.0-bin/bin/MyDBHi;create=true;";
   private static String tableName = "users";
   // jdbc Connection
   private static Connection conn = null;
@@ -217,6 +217,16 @@ public class DBTest {
     }
   }
 
+  public void editGoalWeight(String username, double goalWeight) {
+    try {
+      stmt = conn.createStatement();
+      stmt.execute("update USERS set GOALWEIGHT = " + goalWeight +  " where USERNAME = '" + username + "'");
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+  }
+
   public void editGoal(String username, String goal) {
     try {
       stmt = conn.createStatement();
@@ -318,6 +328,22 @@ public class DBTest {
       sqlExcept.printStackTrace();
     }
     return displayGoalCalories(username);
+  }
+
+  public double displayGoalWeight(String username) {
+    try {
+      stmt = conn.createStatement();
+      ResultSet results = stmt.executeQuery("select * from USERS where USERNAME = '" + username + "'");
+      while (results.next()) {
+        double goalWeight = results.getInt(13);
+        return goalWeight;
+      }
+      results.close();
+      stmt.close();
+    } catch (SQLException sqlExcept) {
+      sqlExcept.printStackTrace();
+    }
+    return displayGoalWeight(username);
   }
 
   public int displayAge(String username) {
